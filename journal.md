@@ -48,3 +48,39 @@ ebuild:
     - There's other make targets that the docs discuss, add these as USE-flags
     - Or don't - does the "StandardSet" provide anything that's worthwhile or
       useful on its own?
+
+_later that same day_
+
+Alright, reading through some of the build output, catching some notes here:
+
+- I think "StandardSet" includes the following:
+    - UnrealLightmass
+    - CrashReportClientEditor
+    - ShaderCompileWorker
+    - CrashReportClient
+    - I think this because of the following output I saw:
+```sh
+Running command : Engine/Binaries/DotNET/UnrealBuildTool.exe UnrealLightmass Linux Development
+Running command : Engine/Binaries/DotNET/UnrealBuildTool.exe CrashReportClientEditor Linux Shipping
+Running command : Engine/Binaries/DotNET/UnrealBuildTool.exe ShaderCompileWorker Linux Development
+Running command : Engine/Binaries/DotNET/UnrealBuildTool.exe CrashReportClient Linux Shipping
+```
+- k, so it's definitely using it's own (downloaded) clang compiler. ugh - but
+  let's just build it this way for now, get something up and running. But it'll
+  be real nice to try to get it to use my system clang
+    - based on output `using toolchain located at
+      '/path/to/my/git/clone/Engine/Extras....etc<some clang stuff>'`
+- ugh, bundled libc++ and standard c++ library. w/e, stay the course
+- Ok, I guess things build in this order:
+    1. UnrealHeaderTool
+    2. CrashReportClientEditor
+    3. UnrealLightmass
+    4. ShaderCompilerWorker
+    5. CrashReportClient
+    6. UnrealFrontend (this one is honking big)
+    7. UnrealInsights
+    8. UE4Editor (nah, this is in honking HUGE)
+
+So right now, UE4Editor is still cranking. What I'm wondering though is do I
+absolutely **need** the editor in order to make games? Or is it just a super
+nice IDE? We'll see.
