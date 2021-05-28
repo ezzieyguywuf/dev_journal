@@ -28,6 +28,13 @@ separate document? I'm thinking yes...)
 - Explore virgl: someone said I could probably get very good graphics
   acceleration with this, and **not** have to forward my graphics card to the VM
 
+_later that day_
+
+Sweet, windows 10 update finished! However, the audio is all garbled, ugh! I
+think last time it had something to do with "MSI Interrupt" I think, so I'll
+google around and see if I can re-do it. It doesn't seem to bother my daughter,
+so I'll just let her enjoy her game-time for now.
+
 2021-05-27
 ==========
 
