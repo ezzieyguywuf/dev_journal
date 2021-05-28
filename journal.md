@@ -1,3 +1,33 @@
+2021-05-28
+==========
+
+Whoot, UE4Editor finished overnight. I haven't cranked it up yet, though,
+because I'm busy udating my windows 10 vm so my daugther (I guess I'll keep her
+name out of  this) can play some minecraft bedrock edition later.
+
+I know what you're thinking "But wolf, you can play minecraft in linux natively
+if you use the java version." Yes, this is true, but whenever she's not here,
+she plays on her nintendo switch, which only has the bedrock edition. So if we
+want to play together, then I have to crank up windows 10. Even though she'll be
+playing alone today, the world we've built is all on the windows 10 vm, so there
+you have it, let's go do 2 hrs worth of windws updates.
+
+That being said, I've got some more things to add to my list of  things I want
+to work on but currently don't have time to (should I keep all these in a
+separate document? I'm thinking yes...)
+
+- Figure out how to adjust which drive SeaBios will try to boot from first
+    - this is a problem for me because I pass through two drives, and the one
+      that SeaBios tries to boot is NOT the one with the OS on it, so it fails
+    - My previous solution was to just his `<Esc>` to manually select the
+      correct drive from the menu
+    - for some reason, SeaBios is not recognizing my keyboard. Leading too...
+- Figure out why SeaBios is not recognizing my keyboard
+    - It doesn't appear to be a qemu problem, b/c once Windows 10 boots up it
+      sees the keyboard just fine
+- Explore virgl: someone said I could probably get very good graphics
+  acceleration with this, and **not** have to forward my graphics card to the VM
+
 2021-05-27
 ==========
 
