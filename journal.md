@@ -26,7 +26,7 @@ So, let's talk about what's going on with Unreal Engine ebuild
   they put a lot of work in to it then make it free, so they sort of ask you to
   sign your life away, nbd.
 - I made a very bare-bones ebuild that asks you to download the dist file
-- I also closed the repository and I'm trying to build it "locally" (i.e.
+- I also cloned the repository and I'm trying to build it "locally" (i.e.
   outside of portage) first
     - first attempt failed - I followed the instructions to downloads
       dependencies and generate a cmake file. Then I did `mkdir build; cd build;
