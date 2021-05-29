@@ -26,6 +26,14 @@ directly.
 
 I highly doubt it will be succesful. But we'll see.
 
+_not that long later_
+
+k, so `find . -name "CMakeLists.txt"` in a "vanilla" project dir versus one
+that's run the `GenerateBuildFiles.sh` actually results in only one difference -
+a top-level `CMakeLists.txt`. It seems that all the sub-folders already contain
+`CMakeLists.txt`, which could actually make our crazy plan somewhat less
+crazy...
+
 2021-05-28
 ==========
 
