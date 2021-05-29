@@ -1,3 +1,31 @@
+2021-05-29
+==========
+
+Ok, not a ton of time for dev today (it's a saturday and my daugther is still
+here [whoot!]) but I did want to record that I want to try a different strategy
+with the unreal engine ebuild.
+
+Till now, I've been trying to use their build tools. It essentially goes
+something like this:
+
+1. run a `GetDependencies.sh` script (I'm paraphrasing) to go out onto the web
+   and download stuff - this won't work in portage due to the network sandbox
+2. run some sort of `Setup.sh` script that...sets things up. Even this seems to
+   call some `exe` executables that download `dll`s from...somewhere. Again,
+   that won't fly in portage
+3. Run a `GenerateBuildFiles.sh` script (again, paraphrasing) to
+   generate...build files. Like, `CMakeLists.txt`
+
+I've looked at these `CMakeLists.txt` files, they're kind of wonky and use a
+bunch of `add_custom_target` calls, and then they execute a bunch of build
+scripts.
+
+So, here's the new approach: just skip all of that. Instead, I'm going to take a
+stab at just writing my own `CMakeLists.txt` from scratch to build the source
+directly.
+
+I highly doubt it will be succesful. But we'll see.
+
 2021-05-28
 ==========
 
