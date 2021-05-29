@@ -35,6 +35,20 @@ think last time it had something to do with "MSI Interrupt" I think, so I'll
 google around and see if I can re-do it. It doesn't seem to bother my daughter,
 so I'll just let her enjoy her game-time for now.
 
+_right before bed_
+
+dang - packaging unreal engine is turning in to a real rabit hole.
+
+so i've deciphered most of the setup scripts, but now I'm stuck because they
+ship this GitDependencies.exe executable that magically fetches a bunch of dlls
+from...somewhere. I dunno.
+
+i may have to abandon this cause...I mean, I can gathwr and self-host tbe stuff
+that GitDepemdencies.exe fetches, but i have no way of knowing if that violates
+any copyrights or licenses.
+
+I'll press on for noq but it's not lookimg good...
+
 2021-05-27
 ==========
 
