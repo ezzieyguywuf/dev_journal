@@ -34,6 +34,18 @@ a top-level `CMakeLists.txt`. It seems that all the sub-folders already contain
 `CMakeLists.txt`, which could actually make our crazy plan somewhat less
 crazy...
 
+_after the kids are in bed_
+
+I started learning a bit about C++20 - wow it seems cool! Between modules and
+ranges (and probs some other features added since C++11 that I wasn't aware of),
+it seems like I may be able to use some of my functional, haskell workflows in
+C++20. The `co_yield` thing seems rather pythoney, but that's not bad - I guess
+they're trying to modernize the language? or maybe python just did it better,
+and so they're copying?
+
+Whatever, it's neat. I should do a project to get my feet wet with these
+features. Oh, concepts, yea those are cool!
+
 2021-05-28
 ==========
 
