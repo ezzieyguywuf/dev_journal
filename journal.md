@@ -1,3 +1,82 @@
+2021-05-30
+==========
+
+Ok, again not a ton af time today. I've done a `diff` between a clean dir and
+one that has run the `GetDependencies.sh` script, and have identified the
+following missing files from `Engine/Binaries/DotNET` (I forget why I chose this
+specific directory to focus my search, but I promise there was some sort of
+reason):
+
+- AgentInterface.dll
+- Ionic.Zip.Reduced.dll
+- Microsoft.VisualStudio.Setup.Configuration.Interop.dll
+- NetworkProfiler.exe
+- NetworkProfiler.exe.config
+- OneSky.dll
+- SwarmAgent.exe
+- SwarmAgent.exe.config
+- SwarmCommonUtils.dll
+- SwarmCoordinator.exe
+- SwarmCoordinator.exe.config
+- SwarmCoordinatorInterface.dll
+- SwarmInterface.dll
+- UnrealBuildTool.exe
+- UnrealBuildTool.exe.config
+- UnrealBuildTool.pdb
+- UnrealBuildTool.xml
+- UnrealControls.dll
+
+I believe the goal is to execute
+
+```sh
+xbuild /property:Configuration=Development \
+       /verbosity:quiet /nologo /p:NoWarn=1591 \
+       Engine/Source/Programs/UnrealBuildTool/UnrealBuildTool.csproj
+```
+
+This snippet was taken directly out of
+`Engine/Build/Batchfiles/Linux/GenerateProjectFiles.sh`, and when succesfull I
+guess it will create the `UnrealBuildTool.exe`, which is, like, one of the
+crowning glories of the unreal engine stuff I guess (I does _a lot_).
+
+For some reason (again, I can't remember why...) I've decided to focus my
+energies first on figuring out how to get my hands on `Ionic.Zip.Reduced.dll`.
+
+I've found [this project][1], which _seems_ to be the original. I tried building
+it by just doing,
+`xbuild /property:Configuration=Release Zip\ Reduced/Zip\ Reduced.csproj`,
+however this failed due to something related to signing (I dunno).
+
+Next, I found [this project][2], which says it's a fork of DotNetZip "without
+signing" (sounds promising!) but it uses a bunch of ruby stuff to fetch
+dependencies and build.
+
+_got distrcated for a while, and then..._
+
+HAH! Ok, so I guess www.nuget.org is some sort of windows/visual basic upload
+place for people to share things. So at least the second (if not the first) of
+the projects I listed above have dll's available from download from nuget. So
+now the biggest hurdle is figuring out the licensing, but MAN this is sweet.
+Hopefully the other DLL's are as "easily" attainable!
+
+_right before bed_
+
+I'm so dumb. `Engine/Sources/ThirdParty` contains a bunch (all?) of the
+"ThirdParty" source files, including DotNetZip and a bunch of other stuff.
+Probably I just need to execute
+`Engine/Build/Batchfiles/Linux/BuildThirdParty.sh` and everything will be cool.
+We'll see.
+
+Also, I discovered that the source code for the `GitDependencies.exe` thing IS
+in the tree, it's under `Engine/Source/Programs/GitDependencies` (doy!). It's in
+C#, so I'll either have to learn C# or just sort of guess at what's going on.
+But this is helpful!
+
+Hope is not lost!
+
+[1]: https://github.com/DinoChiesa/DotNetZip
+[2]: https://github.com/haf/DotNetZip.Semverd
+
 2021-05-29
 ==========
 
