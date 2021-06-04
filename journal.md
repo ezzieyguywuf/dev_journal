@@ -1,3 +1,72 @@
+2021-06-03
+==========
+
+Dang, been a few days with no update. That's cool, it's probably unlikely that
+I'll actually have updates _every_ day.
+
+Today, I'm brushing up on come C++ stuff - specifically, trying to implement a
+solution to "find the longest palindrome in a string". I thought I might use
+`std::string` and `std::string::iterator`. i.e., use the iterator to go from
+character to character, and then branch out from there to check for the longest
+palindrome. I'd then store the length and the palindrome itself, and finally
+return the longest.
+
+Anywho, this led down the rabithole of "waitaminute: what exactly is an
+`iterator` again? what abotu `const_iterator`?"
+
+So...`iterator` is a type that is actually typically (always) defined within
+some other class - for example, `std::string` defines `std::string::iterator`.
+
+This `iterator` has different semantics based on the class that defines it -
+generally, though, it can be "dereferenced" (like a pointer) in order to get
+back a value. This value can be simply fetched, or even written to in order to
+change the value.
+
+Iterators also define the `++` operator - this is how the iteration actually
+works. By using the `++` operator, we go to the next "thing". So for
+`std::string::iterator` this means "go to the next character". For `std::array`
+it means "go to the next item in the array" etc.
+
+`std::string::const_iterator` is useful when you want to access elements, but
+ensure that you don't accidentally modify them
+
+`const std::string::iterator` means I can modify the value but not the iterator
+- so I can't do `it++`.
+
+`const std::string::const_iterator` means I can't modify the value OR the
+iterator. This seems mostly useless actually.
+
+Anyway, ultimately I think I'll probably ax this idea - the plan was do do
+something like this:
+
+```cpp
+
+std::string getPalindrome(std::string::const_iterator it, const std::string& str)
+{
+    // check all strings "around" the character pointed to by `it` for
+    // palindromes
+    //
+    // importantly: `it` could point to the "middle" of a palindrom, i.e. "b" in
+    // "cabac", or it could point to the "center" of a palindrome, i.e. "d" in 
+    // "feddef"
+}
+
+std::string getLongestPalindrom(const std::string& str)
+{
+    for(std::string::const_iterator it; it != str.end() ; it++)
+    {
+        getPalindrome(it, str);
+
+        // save the return value from `getPalindrome`, and then compare it
+        // against the last longest one and...well you get it
+    }
+}
+```
+
+Anywho, I can probably just include the `getPalindrome` logic in
+`getLongestPalindrome`, I doubt its useful to actually split it out, unless I
+want to do some sort of recursive thing.
+
 2021-05-30
 ==========
 
